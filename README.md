@@ -23,6 +23,9 @@ yarn run start
 
 # build
 ```bash
+cd tomato-web
+yarn run build
+
 cd tomato-app
 yarn run build-win
 yarn run build-mac
