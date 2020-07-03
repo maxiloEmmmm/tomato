@@ -27,7 +27,7 @@ cd tomato-web
 yarn run build
 
 cd tomato-app
-yarn run build-win
-yarn run build-mac
+yarn run pack-win
+yarn run pack-mac
 ```
 
