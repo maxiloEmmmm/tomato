@@ -40,6 +40,7 @@ export default {
 
             if(this.current >= this.time * 60) {
                 // this.$emit("play", { key: "reset_end" })
+                this.pause()
                 this.$emit("notification", {
                     title: "休息结束!",
                     msg: "~",
