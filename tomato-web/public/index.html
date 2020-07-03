@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'">    <title>Document</title> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *;connect-src *;script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    <style>
+        .loading-cat-wrapper.hide {
+            display: none;
+        }
+        .wrapper .loading-cat-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    .loading-cat-wrapper {
+        overflow: hidden;
+        background: #e6dcdb;
+    }
+    .loading-cat {
+    position: relative;
+    height: 420px;
+    animation: 2.74s linear infinite loading-cat;
+    }
+    .loading-cat .loading-cat__head, .loading-cat .loading-cat__foot, .loading-cat .loading-cat__body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+    }
+    .loading-cat .loading-cat__body {
+    background-image: radial-gradient(transparent 0%, transparent 35%, #383c4b 35%, #383c4b 39%, #eda65d 39%, #eda65d 46%, #f2c089 46%, #f2c089 60%, #eda65d 60%, #eda65d 67%, #383c4b 67%, #383c4b 100%);
+    }
+    .loading-cat .loading-cat__head:before, .loading-cat .loading-cat__foot:before {
+    background-image: radial-gradient(transparent 0%, transparent 35%, #383c4b 35%, #383c4b 39%, #eda65d 39%, #eda65d 67%, #383c4b 67%, #383c4b 100%);
+    }
+    .loading-cat .loading-cat__head:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    clip-path: polygon(100% 20%, 50% 50%, 70% -10%);
+    -webkit-clip-path: polygon(100% 20%, 50% 50%, 70% -10%);
+    }
+    .loading-cat .loading-cat__head:after {
+    content: '';
+    width: 66px;
+    height: 40px;
+    position: absolute;
+    top: 13px;
+    right: 63px;
+    background-image: linear-gradient(#e6dcdb 65%, transparent 65%), radial-gradient(#e6dcdb 51%, #383c4b 55%, #383c4b 68%, transparent 70%);
+    transform: rotate(-66deg);
+    }
+    .loading-cat .loading-cat__head .loading-cat__face {
+    width: 80px;
+    height: 60px;
+    left: 145px;
+    top: 29px;
+    position: absolute;
+    transform: rotate(-47deg);
+    background: radial-gradient(circle, #f2c089 0%, #f2c089 23%, transparent 23%) -3px 17px no-repeat, radial-gradient(circle, #383c4b 0%, #383c4b 6%, transparent 6%) 12px -12px no-repeat, radial-gradient(circle, #383c4b 0%, #383c4b 6%, transparent 6%) -12px -12px no-repeat, radial-gradient(#eda65d 0%, #eda65d 15%, transparent 15%) 0 -11px no-repeat, radial-gradient(circle, transparent 5%, #383c4b 5%, #383c4b 10%, transparent 10%) -3px -5px no-repeat, radial-gradient(circle, transparent 5%, #383c4b 5%, #383c4b 10%, transparent 10%) 3px -5px no-repeat, radial-gradient(circle, #eda65d 45%, transparent 45%) 0 -3px, linear-gradient(transparent 35%, #383c4b 35%, #383c4b 41%, transparent 41%, transparent 44%, #383c4b 44%, #383c4b 50%, transparent 50%, transparent 53%, #383c4b 53%, #383c4b 59%, transparent 59%);
+    }
+    .loading-cat .loading-cat__foot:before, .loading-cat .loading-cat__foot:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    }
+    .loading-cat .loading-cat__foot:before {
+    border-radius: 50%;
+    clip-path: polygon(50% 50%, 0% 50%, 0% 25%);
+    -webkit-clip-path: polygon(50% 50%, 0% 50%, 0% 25%);
+    }
+    .loading-cat .loading-cat__foot .loading-cat__tummy-end {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #f2c089;
+    left: 19px;
+    top: 105px;
+    }
+    .loading-cat .loading-cat__foot .loading-cat__bottom {
+    width: 35px;
+    height: 15px;
+    position: absolute;
+    top: 78px;
+    left: 12px;
+    border: 6px solid #383c4b;
+    border-bottom: 0;
+    border-radius: 50%;
+    transform: rotate(21deg);
+    background: #eda65d;
+    }
+    .loading-cat .loading-cat__hands, .loading-cat .loading-cat__legs, .loading-cat .loading-cat__foot:after {
+    width: 10px;
+    height: 25px;
+    position: absolute;
+    border: 6px solid #383c4b;
+    background-color: #eda65d;
+    }
+    .loading-cat .loading-cat__hands {
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+    }
+    .loading-cat .loading-cat__hands.loading-cat__left {
+    top: 144px;
+    right: 163px;
+    transform: rotate(-20deg);
+    }
+    .loading-cat .loading-cat__hands.loading-cat__right {
+    top: 123px;
+    right: 128px;
+    transform: rotate(-25deg);
+    }
+    .loading-cat .loading-cat__legs {
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    }
+    .loading-cat .loading-cat__legs.loading-cat__left {
+    top: 65px;
+    left: 50px;
+    transform: rotate(25deg);
+    }
+    .loading-cat .loading-cat__legs.loading-cat__right {
+    top: 53px;
+    left: 12px;
+    transform: rotate(22deg);
+    }
+    .loading-cat .loading-cat__foot:after {
+    width: 8px;
+    height: 40px;
+    top: 42px;
+    left: 36px;
+    z-index: -1;
+    transform: rotate(25deg);
+    background-color: #c6823b;
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    }
+    @keyframes loading-cat__body {
+    0% {
+        clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 100% 100%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 100% 100%, 100% 20%);
+    }
+    10% {
+        clip-path: polygon(50% 50%, 30% 120%, 50% 100%, 100% 100%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 30% 120%, 50% 100%, 100% 100%, 100% 20%);
+    }
+    20% {
+        clip-path: polygon(50% 50%, 100% 90%, 120% 90%, 100% 100%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 100% 90%, 120% 90%, 100% 100%, 100% 20%);
+    }
+    40% {
+        clip-path: polygon(50% 50%, 100% 45%, 120% 45%, 120% 50%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 100% 45%, 120% 45%, 120% 50%, 100% 20%);
+    }
+    50% {
+        clip-path: polygon(50% 50%, 100% 45%, 120% 45%, 120% 50%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 100% 45%, 120% 45%, 120% 50%, 100% 20%);
+    }
+    65% {
+        clip-path: polygon(50% 50%, 100% 65%, 120% 65%, 120% 50%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 100% 65%, 120% 65%, 120% 50%, 100% 20%);
+    }
+    80% {
+        clip-path: polygon(50% 50%, 75% 130%, 120% 65%, 120% 50%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 75% 130%, 120% 65%, 120% 50%, 100% 20%);
+    }
+    90% {
+        clip-path: polygon(50% 50%, -20% 110%, 50% 120%, 100% 100%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, -20% 110%, 50% 120%, 100% 100%, 100% 20%);
+    }
+    100% {
+        clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 100% 100%, 100% 20%);
+        -webkit-clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 100% 100%, 100% 20%);
+    }
+    }
+    @keyframes loading-cat {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(-80deg);
+    }
+    20% {
+        transform: rotate(-180deg);
+    }
+    40% {
+        transform: rotate(-245deg);
+    }
+    50% {
+        transform: rotate(-250deg);
+    }
+    68% {
+        transform: rotate(-300deg);
+    }
+    90% {
+        transform: rotate(-560deg);
+    }
+    100% {
+        transform: rotate(-720deg);
+    }
+    }
+    @keyframes loading-cat__foot {
+    0% {
+        transform: rotate(-10deg);
+    }
+    10% {
+        transform: rotate(-100deg);
+    }
+    20% {
+        transform: rotate(-145deg);
+    }
+    35% {
+        transform: rotate(-190deg);
+    }
+    50% {
+        transform: rotate(-195deg);
+    }
+    70% {
+        transform: rotate(-165deg);
+    }
+    100% {
+        transform: rotate(-10deg);
+    }
+    }
+    .loading-cat .loading-cat__body {
+    animation: 2.74s linear infinite loading-cat__body;
+    }
+    .loading-cat .loading-cat__foot {
+    animation: 2.74s linear infinite loading-cat__foot;
+    }
+    .loading-cat-tip {
+        text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="app-wrapper">
+        <div class="loading-cat-wrapper">
+            <div class="loading-cat">
+                <div class="loading-cat__body"></div>
+                <div class="loading-cat__head">
+                    <div class="loading-cat__face"></div>
+                </div>
+                <div class="loading-cat__foot">
+                    <div class="loading-cat__tummy-end"></div>
+                    <div class="loading-cat__bottom"></div>
+                    <div class="loading-cat__legs loading-cat__left"></div>
+                    <div class="loading-cat__legs loading-cat__right"></div>
+                </div>
+            </div>
+            <div class="loading-cat-tip">loading...</div>
+        </div>
+        
+        <div id="app"></div>
+    </div>
+</body>
+</html>
