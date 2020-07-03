@@ -21,3 +21,10 @@ yarn
 yarn run start
 ```
 
+# build
+```bash
+cd tomato-app
+yarn run build-win
+yarn run build-mac
+```
+
