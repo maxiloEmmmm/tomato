@@ -1,0 +1,15 @@
+// 导入后端API
+import { TEST } from './api/test';
+
+let mocks = {};
+
+mocks[TEST.MOCK] = {
+    /* default false */
+    reg: false,
+    /* data or function */
+    build: {status: 0},
+    type: 'post',
+    title: '测试请求'
+};
+
+export default mocks;
