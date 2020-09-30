@@ -61,6 +61,8 @@ export default {
         if(this.$route.params.tomato !== undefined) {
             this.time = parseInt(this.$route.params.tomato)
         }
+
+        this.run()
     },
     beforeRouteLeave (to, from, next) {
         this.pause()
