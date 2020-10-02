@@ -30,6 +30,11 @@ let dbToStore = (config) => {
         if(config[k] !== "") {
             switch(k) {
                 case "volume":
+                    let volume = parseInt(maxiloVue.make("utils").tool.number(config[k]))
+                    if(volume < 1 || volume > 6) {
+                        volume = configDefault.volume
+                    }
+                    config[k] = volume
                 case "defaultWorkTime":
                 case "defaultRestTime":
                 case "workTipTime":

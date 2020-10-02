@@ -1,12 +1,12 @@
 import * as initSqlJs from 'sql.js/dist/sql-asm'
 import maxiloVue from 'maxilo-vue';
-import config from "config/tomato"
 var fs = window.require("fs")
-var dbFile = 'db.sqlite'
-var dbExist = fs.existsSync(dbFile)
 maxiloVue.register({
     register(app){
         app.bind("db", async app => {
+            let dbFile = 'db.sqlite'
+            dbFile = maxiloVue.make("utils").getStorePath(dbFile)
+            let dbExist = fs.existsSync(dbFile)
             let sql = await initSqlJs()
             var db = new sql.Database(dbExist ? fs.readFileSync(dbFile) : null)
             if(!dbExist) {
