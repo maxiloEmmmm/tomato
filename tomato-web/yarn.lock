@@ -5701,16 +5701,17 @@ maxilo-vue-ysz-ui@0.0.13:
     postcss-import "^12.0.1"
     vue "^2.6.10"
 
-maxilo-vue@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npm.taobao.org/maxilo-vue/download/maxilo-vue-3.0.1.tgz#1eed5ac94bb2a5a0702d54283a25787631dd87a9"
-  integrity sha1-Hu1ayUuypaBwLVQoOiV4djHdh6k=
+maxilo-vue@3.0.7-beta13:
+  version "3.0.7-beta13"
+  resolved "https://registry.npmjs.org/maxilo-vue/-/maxilo-vue-3.0.7-beta13.tgz#66a44db05abbdecffe1b8ad2b3056676fe35fa71"
+  integrity sha512-I/m6vpSXryHxUU6wncGTDloois92tWmxf6xhrxYykufsMxbpsWUqDeU7I5iiLMdwXy5/Y0Ijo2si0WaTO1UPPQ==
   dependencies:
     axios "^0.18.0"
-    vee-validate "^2.0.5"
+    rollup "^2.23.0"
+    vee-validate "^3.3.8"
     vue "^2.5.16"
     vue-i18n "^7.6.0"
-    vue-router "^3.0.1"
+    vue-router "^3.4.5"
     vuex "^3.0.1"
 
 md5.js@^1.3.4:
@@ -7956,6 +7957,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rollup@^2.23.0:
+  version "2.28.2"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.28.2.tgz#599ec4978144a82d8a8ec3d37670a8440cb04e4b"
+  integrity sha512-8txbsFBFLmm9Xdt4ByTOGa9Muonmc8MfNjnGAR8U8scJlF1ZW7AgNZa7aqBXaKtlvnYP/ab++fQIq9dB9NWUbg==
+  optionalDependencies:
+    fsevents "~2.1.2"
+
 run-async@^2.2.0:
   version "2.4.1"
   resolved "https://registry.npm.taobao.org/run-async/download/run-async-2.4.1.tgz?cache=0&sync_timestamp=1587966159210&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frun-async%2Fdownload%2Frun-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -8394,6 +8402,11 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.npm.taobao.org/sprintf-js/download/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+sql.js@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/sql.js/-/sql.js-1.3.0.tgz#b98c159535cf3e25551f28e98e4dc9cf5849cfc5"
+  integrity sha512-bxrJ/9rqJ2SA6hpHnSodRjKBugZHewRvNTITTt74W1VZWmzODjdS68yQW0/J9oC0NWKylHEtV1ptkoTyOYO4Tw==
 
 sshpk@^1.7.0:
   version "1.16.1"
@@ -9161,10 +9174,10 @@ vary@~1.1.2:
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vee-validate@^2.0.5:
-  version "2.2.15"
-  resolved "https://registry.npm.taobao.org/vee-validate/download/vee-validate-2.2.15.tgz#dc6c925d21e57288d3308fe5a39a0941036c575a"
-  integrity sha1-3GySXSHlcojTMI/lo5oJQQNsV1o=
+vee-validate@^3.3.8:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/vee-validate/-/vee-validate-3.4.0.tgz#dcdefcd45d43823c8b26aceee55f067ef56ca800"
+  integrity sha512-qxcqrGYr2gchZOjyhBKu7G4NOyOTmH6vk8APGdxAiL/0Iy2QZP/vcOYNbx7+zMhg7P3q418AseHR1sbckB5I+A==
 
 vendors@^1.0.0:
   version "1.0.4"
@@ -9238,10 +9251,10 @@ vue-ref@^2.0.0:
   resolved "https://registry.npm.taobao.org/vue-ref/download/vue-ref-2.0.0.tgz#483084d732abed11da796778a8266a3af0ea1a9c"
   integrity sha1-SDCE1zKr7RHaeWd4qCZqOvDqGpw=
 
-vue-router@^3.0.1:
-  version "3.3.4"
-  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
-  integrity sha1-Tjirw0oRxBtsPYJERJouNjumJQs=
+vue-router@^3.4.5:
+  version "3.4.5"
+  resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.4.5.tgz#d396ec037b35931bdd1e9b7edd86f9788dc15175"
+  integrity sha512-ioRY5QyDpXM9TDjOX6hX79gtaMXSVDDzSlbIlyAmbHNteIL81WIVB2e+jbzV23vzxtoV0krdS2XHm+GxFg+Nxg==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"

@@ -15,15 +15,6 @@
 
 <script>
 export default {
-    mounted(){
-        setInterval(() => {
-            this.$emit("notification", {
-                title: "长时间未处理",
-                msg: "请尽快处理",
-                win_time: 5
-            })
-        }, 2000)
-    },
     methods: {touch(){this.$emit("touch")}}
 }
 </script>

@@ -3,7 +3,10 @@ const {app, BrowserWindow, Menu, Tray, nativeImage} = require('electron')
 const electron = require('electron')
 const { session } = require('electron')
 const path = require('path');
-
+const { ipcMain } = require('electron')
+ipcMain.on('refresh-config', (event, args) => {
+  mainWindow.webContents.send('refresh-config', args);
+})
 //托盘对象
 var appTray = null;
 
@@ -36,11 +39,11 @@ function createWindow () {
   }
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./dist-web/index.html')
-  // mainWindow.loadURL('http://localhost:8081')
+  // mainWindow.loadFile('./dist-web/index.html')
+  mainWindow.loadURL('http://localhost:8080')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

@@ -2,9 +2,10 @@
     <div style="min-height: 100vh; display:flex;flex-direction: column;">
         <div v-if="_isNotBegin" style="text-align:center;flex: 0 0 auto;">
             <div class="nav-wrap"><a-icon type="left-square" @click="back" /></div>
+            <a-icon style="cursor:pointer" type="setting" @click="onSetting"/>
         </div>
         <router-view @hide-app="hideApp" @show-app="showApp" @notification="notification" @play="doPlay" @touch="hookChromeAutoPlay" slot="top" style="flex: 1 0 auto" @navInfo="doNav"></router-view>
-        <a-rate style="flex: 0 0 auto" class="rate" v-model="rate" @change="onRateChange" :count="6"><a-icon slot="character" type="sound" /></a-rate>
+        <a-rate style="flex: 0 0 auto" class="rate" v-model="volume" :count="6"><a-icon slot="character" type="sound" /></a-rate>
         <audio ref="music" muted :src="pathtomusic"></audio>
     </div>
 </template>
@@ -26,19 +27,23 @@ let crn = (vm, to) => {
         ? to.name
         : ''
 }
+let vtor = (volume) => {
+    return (volume - 1) * 0.2
+}
 const time_ready_music = require('assets/media/time-ready.mp3')
 const end_music = require('assets/media/end.mp3')
 const tip_music = require('assets/media/tip.mp3')
-import { mapMutations } from 'vuex'
-const {remote} = window.require("electron")
+import { mapMutations, mapState } from 'vuex'
+const {remote, ipcRenderer} = window.require("electron")
 const ico = require("../../../common/favicon.ico")
+import maxiloVue from "maxilo-vue"
+ipcRenderer.on('refresh-config', (e, msg) => {
+    maxiloVue.make("utils").app.refreshConfig(msg)
+});
 export default {
     data(){return {pathtomusic: time_ready_music, rate: 2, currentRouteName: '', routerMeta: {args: {}, name: {}}}},
     methods: {
         ...mapMutations('notification', ['setInfo']),
-        onRateChange(number){
-            this.$refs.music.volume = (number - 1) * 0.2
-        },
         hookChromeAutoPlay(){this.$refs.music.muted = false },
         doPlay(payload){
             this.pathtomusic = {
@@ -67,6 +72,15 @@ export default {
         },
         back(){this.$router.push({name: this.routerMeta.name, params: this.routerMeta.args})},
         doNav(meta){Object.assign(this.routerMeta, meta)},
+        onSetting(){
+            let settingWin = new remote.BrowserWindow({
+                frame: false, show: true, icon: ico
+            })
+            settingWin.loadURL(this.$utils.href('/setting'))
+            this.setInfo({
+                sid: settingWin.id,
+            })
+        },
         notification(payload){
             let notificationWin = new remote.BrowserWindow({
                 frame: false, show: false, title: '提醒', icon: ico,
@@ -82,15 +96,25 @@ export default {
                 time: !!payload.win_time ? payload.win_time : 0,
             })
             notificationWin.loadURL(this.$utils.href('/notification'))
-            notificationWin.show()
+            
+            if(payload.focus) {
+                notificationWin.show()
+            }else {
+                notificationWin.showInactive()
+            }
             notificationWin.moveTop()
-            // notificationWin.webContents.openDevTools()
-            // notificationWin.setAlwaysOnTop(true)
+            notificationWin.setAlwaysOnTop(true)
         },
         showApp(){
             let win = this.getApp()
             win.moveTop()
+            notificationWin.setAlwaysOnTop(true)
             win.show()
+            if(this.$store.state.config.showAppMissFocus) {
+                notificationWin.show()
+            }else {
+                notificationWin.showInactive()
+            }
         },
         hideApp(){this.getApp().hide()},
         getApp(){
@@ -100,9 +124,20 @@ export default {
         }
     },
     mounted(){
-        this.rate = 3
+        this.$refs.music.volume = vtor(this.volume)
     },
-    computed: {_isNotBegin(){return !!this.currentRouteName}},
+    computed: {
+        _isNotBegin(){return !!this.currentRouteName},
+        volume: {
+            get(){
+                return this.$store.state.config.volume
+            },
+            set(volume){
+                this.$store.commit("config/setConfig", {volume})
+                this.$refs.music.volume = vtor(volume)
+            }
+        }
+    },
     beforeRouteEnter (to, from, next) {
         next(vm => crn(vm, to))
     },

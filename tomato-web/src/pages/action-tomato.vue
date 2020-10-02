@@ -81,9 +81,18 @@ export default {
             this.setActionStatus('run');
             this.handler = setInterval(() => {
                 this.current++
+                if(this.$store.state.config.workTipTime > 0 && this.current == (this.time - this.$store.state.config.workTipTime) * 60) {
+                    this.$emit("notification", {
+                        title: this.$store.state.config.workTipMsg ? this.$store.state.config.workTipMsg : "提示!",
+                        msg: "~",
+                        win_time: 6
+                    })
+                }
                 if(this.current >= this.time * 60) {
                     this.pause(true)
-                    //this.$emit("play", { key: "tomato_end" })
+                    if(this.$store.state.config.resetEndMusicEnable) {
+                        this.$emit("play", { key: "tomato_end" })
+                    }
                     this.$emit("notification", {
                         title: "番茄熟了!",
                         msg: "~",

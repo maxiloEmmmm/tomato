@@ -6,5 +6,9 @@ import './store';
 import './i18n';
 import './utils';
 import './component';
+import "./db"
+import "./boostrap"
+
+
 maxiloVue.target = App;
 maxiloVue.run();
