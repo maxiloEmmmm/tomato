@@ -30,6 +30,7 @@ export default {
         this.$emit("hide-app")
     },
     created(){
+        this.time = this.$store.state.config.defaultRestTime
         this.$emit("notification", {
             title: `${this.time}分钟休息开始!`,
             msg: "~",
@@ -39,7 +40,9 @@ export default {
             this.current++
 
             if(this.current >= this.time * 60) {
-                // this.$emit("play", { key: "reset_end" })
+                if(this.$store.state.config.resetEndMusicEnable) {
+                    this.$emit("play", { key: "reset_end" })
+                }
                 this.pause()
                 this.$emit("notification", {
                     title: "休息结束!",

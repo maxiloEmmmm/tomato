@@ -24,6 +24,9 @@ export default {
     beforeCreate(){
         this.$emit('navInfo', {name: 'action-start'})
     },
+    created(){
+        this.time = this.$store.state.config.defaultWorkTime
+    },
     methods:{
         up5(){if (this.time + 5 >= 100) return; this.time += 5},
         down5(){if (this.time - 5 < 0) return;this.time += -5},

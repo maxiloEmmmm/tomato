@@ -1,12 +1,14 @@
 import maxiloVue from 'maxilo-vue';
 
 import notification from './notification';
+import config from './config';
 
 //两种方式因人而异
 
 //1
 const store = maxiloVue.make("store")
 store.add('notification', notification);
+store.add('config', config);
     //getters['testAuth/x']
 
     //pages/test/index.vue

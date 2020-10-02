@@ -3,6 +3,7 @@ import './middleware';
 let $router = maxiloVue.make("router").getRoute();
 
 $router.add('/notification', () => import('pages/notification'))
+$router.add('/setting', () => import('pages/setting'))
 
 $router.group("/", () => import('pages/action-layout'), r => {
     return [

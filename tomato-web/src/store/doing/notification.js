@@ -2,6 +2,7 @@ const state = {
     title: '',
     msg: '',
     wid: 0,
+    sid: 0,
     time: 0
 };
 

@@ -20,7 +20,8 @@
   "author": "maxilo",
   "license": "MIT",
   "dependencies": {
-    "compression-webpack-plugin": "^4.0.0"
+    "compression-webpack-plugin": "^4.0.0",
+    "sql.js": "^1.3.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -34,7 +35,7 @@
     "core-js": "^3.6.5",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "maxilo-vue": "3.0.1",
+    "maxilo-vue": "3.0.7-beta13",
     "maxilo-vue-ysz-ui": "0.0.13",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",

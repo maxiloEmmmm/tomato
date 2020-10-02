@@ -37,7 +37,6 @@ export default {
                     })
                 }, 45 * 1000)
             }
-                console.log(this.time)
             this.time++
         }, 1000)
     }
