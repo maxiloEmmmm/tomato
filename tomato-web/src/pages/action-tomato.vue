@@ -1,7 +1,7 @@
 <template>
     <div style="padding:4px; flex-direction: column; display: flex;">
         <a-rate class="goes-list" count="25" :disabled="true" :value="_rate"><a-icon slot="character" type="sound" /></a-rate>
-        <ysz-list :group="3" :row="true" :no-line="true" style="align-items:center">
+        <ysz-list :group="4" :row="true" :no-line="true" style="align-items:center;flex-wrap:nowrap!important">
             <div class="action-wrap" :class="{'action-disabled': _running}" @click="run">
                 <a-icon :class="{active: action == 'run'}" type="play-circle" />
                 <span class="action-tip">开始🏁</span></div>
@@ -10,7 +10,10 @@
                 <span class="action-tip">暂停⏸</span></div>
             <div class="action-wrap" @click="reset">
                 <a-icon type="reload" />
-                <span class="action-tip">重新开始🏎</span></div>
+                <span class="action-tip">🏎</span></div>
+            <div class="action-wrap" @click="rest">
+                <a-icon type="frown" />
+                <span class="action-tip">休息🛏</span></div>
         </ysz-list>
     </div>
 </template>
@@ -48,6 +51,7 @@
 </style>
 
 <script>
+import {TomatoStart, TomatoEnd, TomatoToRest, MusicPlayTomatoEnd} from "config/log"
 export default {
     data(){return {time: 25, current: 0, action: '', handler: null}},
     computed: {
@@ -58,9 +62,15 @@ export default {
         this.$emit('navInfo', {name: 'action-before'})
     },
     created(){
-        if(this.$route.params.tomato !== undefined) {
-            this.time = parseInt(this.$route.params.tomato)
+        this.time = this.$store.state.config.defaultWorkTime
+
+        if(this.$route.query.tomato !== undefined) {
+            this.time = parseInt(this.$route.query.tomato)
         }
+
+        this.$utils.app.log(TomatoStart, {
+            time: this.time
+        })
 
         this.run()
     },
@@ -82,6 +92,7 @@ export default {
             this.handler = setInterval(() => {
                 this.current++
                 if(this.$store.state.config.workTipTime > 0 && this.current == (this.time - this.$store.state.config.workTipTime) * 60) {
+                    this.$utils.app.log(MusicPlayTomatoEnd)
                     this.$emit("notification", {
                         title: this.$store.state.config.workTipMsg ? this.$store.state.config.workTipMsg : "提示!",
                         msg: "~",
@@ -111,7 +122,28 @@ export default {
             clearInterval(this.handler)
             this.handler = null
         },
-        reset(){this.current = 0}
+        reset(){
+            this.$utils.app.log(TomatoReset, {
+                current: this.current,
+                time: this.time
+            })
+            this.$utils.app.log(TomatoEnd, {
+                time: this.time,
+                current: this.current,
+            })
+            this.current = 0
+        },
+        rest(){
+            this.$utils.app.log(TomatoToRest, {
+                current: this.current,
+                time: this.time
+            })
+            this.$utils.app.log(TomatoEnd, {
+                time: this.time,
+                current: this.current,
+            })
+            this.$router.push({name: "action-rest"})
+        }
     }
 }
 </script>

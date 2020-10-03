@@ -12,6 +12,8 @@ maxiloVue.register({
             if(!dbExist) {
                 db.run(`
                     create table config(key text, value text); 
+                    create table log(id, action text, created_at text);
+                    create table log_info(log_id, key text, value text); 
                 `)
             }
 
@@ -46,7 +48,7 @@ maxiloVue.register({
             }
 
             db.iexec = function(){
-                let result = db.exec(...arguments)
+                let result = db.run(...arguments)
                 fs.writeFileSync(dbFile, Buffer.from(db.export()))
                 return result
             }

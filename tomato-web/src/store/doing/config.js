@@ -16,6 +16,7 @@ let configToDB = (config) => {
             case "workEndMusicEnable":
             case "restEndMusicEnable":
             case "showAppMissFocus":
+            case "restConfirmGoTomato":
                 config[k] = config[k] ? "1" : "0"
                 break
             default:
@@ -44,6 +45,7 @@ let dbToStore = (config) => {
                 case "workEndMusicEnable":
                 case "restEndMusicEnable":
                 case "showAppMissFocus":
+                case "restConfirmGoTomato":
                     config[k] = config[k] == "1"
                     break
                 default:

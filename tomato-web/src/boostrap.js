@@ -1,8 +1,6 @@
 import maxiloVue from 'maxilo-vue';
 import configDefault from "config/tomato"
 
-
-
 maxiloVue.register({
     register(app){
     },
@@ -28,6 +26,14 @@ maxiloVue.register({
             }
 
             db.iexec(`update config set value="${v}" where key="${k}"`)
+        })
+
+        utils.add("app.log", (action, obj) => {
+            let id = utils.uuid()
+            db.iexec(`insert into log(id, action, created_at) values("${id}", "${action}", "${utils.time()}")`)
+            Object.keys(obj).forEach(k => {
+                db.iexec(`insert into log_info(log_id, key, value) values("${id}", "${k}", "${obj[k]}")`)
+            })
         })
 
         let appendConfigKeys = Object.keys(configDefault).filter(c => existKeys[c] === undefined)
