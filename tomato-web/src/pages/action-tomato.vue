@@ -100,6 +100,10 @@ export default {
                     })
                 }
                 if(this.current >= this.time * 60) {
+                    this.$utils.app.log(TomatoEnd, {
+                        time: this.time,
+                        current: this.current,
+                    })
                     this.pause(true)
                     if(this.$store.state.config.resetEndMusicEnable) {
                         this.$emit("play", { key: "tomato_end" })

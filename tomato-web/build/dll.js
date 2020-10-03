@@ -16,7 +16,7 @@ module.exports = {
       "lodash",
       "vue-i18n",
       "core-js",
-      "vuescroll"
+      "vuescroll",
     ]
   },
   output: {
