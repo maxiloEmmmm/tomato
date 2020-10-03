@@ -6,6 +6,7 @@ export default {
     defaultRestTime: 5,
     workEndMusicEnable: false,
     restEndMusicEnable: false,
+    restConfirmGoTomato: false,
     workTipTime: 0,
     workTipMsg: ""
 }

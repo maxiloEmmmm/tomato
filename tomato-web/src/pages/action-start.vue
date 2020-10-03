@@ -14,7 +14,11 @@
 </style>
 
 <script>
+import {Start} from "config/log"
 export default {
+    created(){
+        this.$utils.app.log(Start, {})
+    },
     methods: {touch(){this.$emit("touch")}}
 }
 </script>

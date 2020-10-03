@@ -93,6 +93,7 @@ module.exports = {
           utils: resolve('src/utils'),
           api: resolve('src/api'),
           test: resolve('src/test'),
+          model: resolve('src/model'),
       }
     }
   }

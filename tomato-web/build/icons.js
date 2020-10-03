@@ -23,6 +23,10 @@ export {
 } from '@ant-design/icons/lib/outline/SettingOutline'
 
 export {
+  default as BarChartOutline
+} from '@ant-design/icons/lib/outline/BarChartOutline'
+
+export {
   default as CloseCircleOutline
 } from '@ant-design/icons/lib/outline/CloseCircleOutline'
 

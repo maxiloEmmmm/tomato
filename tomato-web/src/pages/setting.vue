@@ -19,6 +19,9 @@
           <ysz-list-item>
               <span slot="left">休息结束音乐</span><a-switch v-model="restEndMusicEnable"></a-switch>
           </ysz-list-item>
+          <ysz-list-item>
+              <span slot="left">休息直接开始番茄</span><a-switch v-model="restConfirmGoTomato"></a-switch>
+          </ysz-list-item>
       </ysz-list>
     <ysz-list-item-top>
         <span slot="top">番茄提醒</span>

@@ -4,6 +4,7 @@ let $router = maxiloVue.make("router").getRoute();
 
 $router.add('/notification', () => import('pages/notification'))
 $router.add('/setting', () => import('pages/setting'))
+$router.add('/chart', () => import('pages/chart'))
 
 $router.group("/", () => import('pages/action-layout'), r => {
     return [

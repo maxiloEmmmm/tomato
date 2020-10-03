@@ -3,6 +3,8 @@
         <div v-if="_isNotBegin" style="text-align:center;flex: 0 0 auto;">
             <div class="nav-wrap"><a-icon type="left-square" @click="back" /></div>
             <a-icon style="cursor:pointer" type="setting" @click="onSetting"/>
+            <a-divider type="vertical" />
+            <a-icon style="cursor:pointer" type="bar-chart" @click="onChart"/>
         </div>
         <router-view @hide-app="hideApp" @show-app="showApp" @notification="notification" @play="doPlay" @touch="hookChromeAutoPlay" slot="top" style="flex: 1 0 auto" @navInfo="doNav"></router-view>
         <a-rate style="flex: 0 0 auto" class="rate" v-model="volume" :count="6"><a-icon slot="character" type="sound" /></a-rate>
@@ -79,6 +81,15 @@ export default {
             settingWin.loadURL(this.$utils.href('/setting'))
             this.setInfo({
                 sid: settingWin.id,
+            })
+        },
+        onChart(){
+            let chartWin = new remote.BrowserWindow({
+                frame: true, show: true, icon: ico, height: 600,
+            })
+            chartWin.loadURL(this.$utils.href('/chart'))
+            this.setInfo({
+                cid: chartWin.id,
             })
         },
         notification(payload){

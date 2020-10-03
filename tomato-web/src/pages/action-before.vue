@@ -13,7 +13,7 @@
                     <a-button size="small" @click="reset" type="danger">重置</a-button>
                 </ysz-list-item>
             </ysz-list-item>
-            <div class="before-go"><a-button @click="go"><router-link :to="{name: 'action-tomato', params: {tomato: time}}">开始 -></router-link></a-button></div>
+            <div class="before-go"><a-button><router-link :to="{name: 'action-tomato', params: {tomato: time}}">开始 -></router-link></a-button></div>
         </div>
     </div>
 </template>
@@ -31,7 +31,6 @@ export default {
         up5(){if (this.time + 5 >= 100) return; this.time += 5},
         down5(){if (this.time - 5 < 0) return;this.time += -5},
         reset(){this.time = 25},
-        go(){},
     }
 }
 </script>

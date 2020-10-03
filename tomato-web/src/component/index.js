@@ -35,6 +35,7 @@ import {
     Drawer,
     Checkbox,
     Progress,
+    Statistic,
     Alert,
     Rate
 } from 'ant-design-vue'
@@ -70,6 +71,7 @@ maxiloVue.vue.use(Drawer)
 maxiloVue.vue.use(Alert)
 maxiloVue.vue.use(Checkbox)
 maxiloVue.vue.use(Progress)
+maxiloVue.vue.use(Statistic)
 maxiloVue.vue.use(function(Vue){
     Vue.prototype.$message = Message
     Vue.prototype.$notification = Notification
