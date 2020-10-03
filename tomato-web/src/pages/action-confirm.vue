@@ -35,7 +35,7 @@ export default {
 
             this.$router.push({name: this.link == "action-before" && this.$store.state.config.restConfirmGoTomato
                 ? "action-tomato"
-                : link})
+                : this.link})
         }
     },
     created(){
