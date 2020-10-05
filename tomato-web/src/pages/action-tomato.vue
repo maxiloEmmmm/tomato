@@ -51,7 +51,7 @@
 </style>
 
 <script>
-import {TomatoStart, TomatoEnd, TomatoToRest, MusicPlayTomatoEnd} from "config/log"
+import {TomatoStart, TomatoEnd, TomatoToRest, MusicPlayTomatoEnd, ActionPause} from "config/log"
 export default {
     data(){return {time: 25, current: 0, action: '', handler: null}},
     computed: {
@@ -64,8 +64,8 @@ export default {
     created(){
         this.time = this.$store.state.config.defaultWorkTime
 
-        if(this.$route.query.tomato !== undefined) {
-            this.time = parseInt(this.$route.query.tomato)
+        if(this.$route.params.tomato !== undefined) {
+            this.time = this.$utils.tool.number(this.$route.params.tomato)
         }
 
         this.$utils.app.log(TomatoStart, {
@@ -83,7 +83,7 @@ export default {
         run(){
             if(this._running) return
             this.$emit("notification", {
-                title: `${this.time}分钟番茄开始!`,
+                title: `${this.time}分钟番茄${this.current != 0 ? '继续' : '开始'}!`,
                 msg: "~",
                 win_time: 6
             })
@@ -125,6 +125,11 @@ export default {
             this.setActionStatus('pause')
             clearInterval(this.handler)
             this.handler = null
+            this.$utils.app.log(ActionPause, {
+                action: "tomato",
+                time: this.time,
+                current: this.current
+            })
         },
         reset(){
             this.$utils.app.log(TomatoReset, {

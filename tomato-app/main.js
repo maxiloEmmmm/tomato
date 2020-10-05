@@ -39,11 +39,10 @@ function createWindow () {
   }
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./dist-web/index.html')
-  // mainWindow.loadURL('http://localhost:8080')
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // mainWindow.loadFile('./dist-web/index.html')
+  
+  mainWindow.loadURL('http://localhost:8080')
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

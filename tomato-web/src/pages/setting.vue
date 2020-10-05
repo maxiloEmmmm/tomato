@@ -8,6 +8,9 @@
               <span slot="left">默认休息时间</span><a-input v-model="defaultRestTime" type="number"></a-input>
           </ysz-list-item>
           <ysz-list-item>
+              <span slot="left">暂停快捷键(ctrl+?)</span><a-input v-model="pauseKey"></a-input>
+          </ysz-list-item>
+          <ysz-list-item>
               <span slot="left">番茄/休息结束失去焦点</span><a-switch v-model="showAppMissFocus"></a-switch>
           </ysz-list-item>
           <ysz-list-item>
