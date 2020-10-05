@@ -71,11 +71,12 @@ export default {
         this.$utils.app.log(TomatoStart, {
             time: this.time
         })
-
+        document.addEventListener('keydown', this.onPause)
         this.run()
     },
     beforeRouteLeave (to, from, next) {
         this.pause()
+        document.removeEventListener('keydown', this.onPause)
         next()
     },
     methods: {
@@ -104,7 +105,7 @@ export default {
                         time: this.time,
                         current: this.current,
                     })
-                    this.pause(true)
+                    this.pause()
                     if(this.$store.state.config.resetEndMusicEnable) {
                         this.$emit("play", { key: "tomato_end" })
                     }
@@ -120,16 +121,25 @@ export default {
                 }
             }, 1000)
         },
-        pause(force = false){
-            if(!this._running && !force) return
+        pause(){
             this.setActionStatus('pause')
-            clearInterval(this.handler)
+            this.handler && clearInterval(this.handler)
             this.handler = null
-            this.$utils.app.log(ActionPause, {
-                action: "tomato",
-                time: this.time,
-                current: this.current
-            })
+        },
+        onPause(e){ 
+            if(!e.metaKey && !e.ctrlKey) {
+                return
+            }
+            switch(e.key) {
+                case this.$store.state.config.pauseKey: {
+                    this.pause()
+                    this.$utils.app.log(ActionPause, {
+                        action: "tomato",
+                        time: this.time,
+                        current: this.current
+                    })
+                }break;
+            } 
         },
         reset(){
             this.$utils.app.log(TomatoReset, {
