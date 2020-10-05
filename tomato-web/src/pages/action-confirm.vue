@@ -24,13 +24,13 @@ export default {
     },
     beforeRouteLeave (to, from, next) {
         this.handler && clearInterval(this.handler)
-        this.timeHandler && clearInterval(this.timeHandler)
         document.removeEventListener('keydown', this.onPause)
         next()
     },
     methods: {
         go(){
             this.$utils.app.log(ConfirmWait, {
+                link: this.link,
                 time: this.time
             })
 
