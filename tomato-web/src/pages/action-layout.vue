@@ -119,12 +119,11 @@ export default {
         showApp(){
             let win = this.getApp()
             win.moveTop()
-            notificationWin.setAlwaysOnTop(true)
-            win.show()
+            win.setAlwaysOnTop(true)
             if(this.$store.state.config.showAppMissFocus) {
-                notificationWin.show()
+                win.show()
             }else {
-                notificationWin.showInactive()
+                win.showInactive()
             }
         },
         hideApp(){this.getApp().hide()},

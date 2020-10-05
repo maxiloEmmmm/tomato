@@ -8,5 +8,6 @@ export default {
     restEndMusicEnable: false,
     restConfirmGoTomato: false,
     workTipTime: 0,
-    workTipMsg: ""
+    workTipMsg: "",
+    pauseKey: "z"
 }

@@ -5,16 +5,16 @@
         </template>
         <template #extra>
         <a-button type="primary" @click="go">
-            Next
+            Next{{pause ? '(暂停中)' : ''}}
         </a-button>
         </template>
     </a-result>
 </template>
 
 <script>
-import {ConfirmWait} from "config/log"
+import {ConfirmWait, ActionPause} from "config/log"
 export default {
-    data(){return {title: "", link: "", handler: null, time: 0, timeHandler: null, timeWait: 0}},
+    data(){return {title: "", link: "", pause: false, handler: null, time: 0, timeHandler: null}},
     beforeCreate(){this.$emit("show-app")},
     beforeRouteEnter (to, from, next) {
         next(vm => {
@@ -25,23 +25,41 @@ export default {
     beforeRouteLeave (to, from, next) {
         this.handler && clearInterval(this.handler)
         this.timeHandler && clearInterval(this.timeHandler)
+        document.removeEventListener('keydown', this.onPause)
         next()
     },
     methods: {
         go(){
             this.$utils.app.log(ConfirmWait, {
-                time: this.timeWait
+                time: this.time
             })
 
             this.$router.push({name: this.link == "action-before" && this.$store.state.config.restConfirmGoTomato
                 ? "action-tomato"
                 : this.link})
+        },
+        addWaitTime(){
+            if(!this.pause) {
+                this.time++
+            }
+        },
+        onPause(e){ 
+            if(!e.metaKey && !e.ctrlKey) {
+                return
+            }
+            switch(e.key) {
+                case this.$store.state.config.pauseKey: {
+                    this.pause = true
+                    this.$utils.app.log(ActionPause, {
+                        action: "confirm",
+                        time: this.time,
+                        link: this.link
+                    })
+                }break;
+            } 
         }
     },
     created(){
-        this.timeHandler = setInterval(() => {
-            this.timeWait++
-        }, 1000)
         this.handler = setInterval(() => {
             if(this.time >= 135) {
                 clearInterval(this.handler)
@@ -53,8 +71,9 @@ export default {
                     })
                 }, 45 * 1000)
             }
-            this.time++
+            this.addWaitTime()
         }, 1000)
+        document.addEventListener('keydown', this.onPause)
     }
 }
 </script>
