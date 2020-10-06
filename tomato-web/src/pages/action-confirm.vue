@@ -61,8 +61,7 @@ export default {
     },
     created(){
         this.handler = setInterval(() => {
-            if(this.time >= 135) {
-                clearInterval(this.handler)
+            if(this.time == 135) {
                 this.handler = setInterval(() => {
                     this.$emit("notification", {
                         title: "长时间未处理",

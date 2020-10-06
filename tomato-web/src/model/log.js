@@ -5,29 +5,30 @@ function log() {
         let db = await maxiloVue.make("db")
         return db.iquery(`
             select 
-                t1.value as time,
+                case when ceil(t1.value / 60) == 0 then 1 else ceil(t1.value / 60) end  AS time,
                 count(1) as total
             from 
                 log as s 
-                left join log_info as t1 on s.id = t1.log_id and t1.key = "current"
+                left join log_info as t1 on s.id = t1.log_id and t1.key = 'current'
             where
-                action="${logType.RestEnd}"
-            group by t1.value
+                action='${logType.RestEnd}'
+            group by time
         `)
     }
 
     this.TomatoTime = async () => {
         let db = await maxiloVue.make("db")
         return db.iquery(`
-            select 
-                t1.value as time,
-                count(1) as total
-            from 
-                log as s 
-                left join log_info as t1 on s.id = t1.log_id and t1.key = "current"
-            where
-                action="${logType.TomatoEnd}"
-            group by t1.value
+            SELECT
+                case when ceil(t1.value / 60) == 0 then 1 else ceil(t1.value / 60) end AS time,
+                count( 1 ) AS total 
+            FROM
+                log AS s
+                LEFT JOIN log_info AS t1 ON s.id = t1.log_id AND t1.KEY = 'current' 
+            WHERE
+                ACTION = '${logType.TomatoEnd}' 
+            GROUP BY
+                time
         `)
     }
 

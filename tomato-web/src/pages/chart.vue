@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { Pie } from '@antv/g2plot';
+import { Bar } from '@antv/g2plot';
 import { mapState } from 'vuex'
 import logModel from "model/log"
 import * as logKeys from "config/log"
@@ -68,16 +68,17 @@ export default {
         async renderRestTime(){
             await this.$nextTick()
             let data = await model.RestTime()
-            const piePlot = new Pie(this.$refs.restTimeChart, {
+            const piePlot = new Bar(this.$refs.restTimeChart, {
                 data,
-                angleField: 'total',
-                colorField: 'time',
-                radius: 0.8,
-                legend: false,
-                label: {
-                    type: 'inner',
-                    offset: '-0.2',
-                    content: data => `${timeView(data.time)}`,
+                xField: 'total',
+                yField: 'time',
+                meta: {
+                    total: {
+                        alias: '总计',
+                    },
+                    time: {
+                        alias: '分',
+                    },
                 },
             });
 
@@ -86,16 +87,17 @@ export default {
         async renderTomatoTime(){
             await this.$nextTick()
             let data = await model.TomatoTime()
-            const piePlot = new Pie(this.$refs.tomatoTimeChart, {
+            const piePlot = new Bar(this.$refs.tomatoTimeChart, {
                 data,
-                angleField: 'total',
-                colorField: 'time',
-                radius: 0.8,
-                legend: false,
-                label: {
-                    type: 'inner',
-                    content: data => `${timeView(data.time)}`,
-                    offset: '-0.2',
+                xField: 'total',
+                yField: 'time',
+                meta: {
+                    total: {
+                        alias: '总计',
+                    },
+                    time: {
+                        alias: '分',
+                    },
                 },
             });
 
