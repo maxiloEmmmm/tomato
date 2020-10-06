@@ -1,13 +1,8 @@
 <template>
-    <a-alert
-      :message="_title"
-      :description="_msg"
-      type="info"
-      show-icon
-      close-text="Close Now"
-      @close="handleClose"
-      style="height:100vh"
-    />
+    <a-card size="small" :title="_title">
+        <a-button slot="extra" size="small" href="#" @click="handleClose">关闭</a-button>
+        {{_msg}}
+    </a-card>
 </template>
 
 <script>
@@ -23,6 +18,7 @@ export default {
         })
     },
     created(){
+        console.log(this)
         if(this._time != 0 && !isNaN(this._time)) {
             setTimeout(this.handleClose, 1000 * this._time)
         }
