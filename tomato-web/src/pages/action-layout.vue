@@ -91,7 +91,6 @@ export default {
             this.setInfo({
                 cid: chartWin.id,
             })
-            chartWin.openDevTools()
         },
         notification(payload){
             let notificationWin = new remote.BrowserWindow({
@@ -116,7 +115,6 @@ export default {
             }
             notificationWin.moveTop()
             notificationWin.setAlwaysOnTop(true)
-            notificationWin.openDevTools()
         },
         showApp(){
             let win = this.getApp()
