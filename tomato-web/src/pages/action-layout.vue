@@ -101,8 +101,8 @@ export default {
                 y: 0
             })
             this.setInfo({
-                title: payload.title,
-                msg: payload.msg,
+                title: payload.title ? payload.title : "",
+                msg: payload.msg ? payload.msg : "~",
                 wid: notificationWin.id,
                 time: !!payload.win_time ? payload.win_time : 0,
             })

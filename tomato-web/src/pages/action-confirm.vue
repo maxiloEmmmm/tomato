@@ -24,6 +24,7 @@ export default {
     },
     beforeRouteLeave (to, from, next) {
         this.handler && clearInterval(this.handler)
+        this.timeHandler && clearInterval(this.timeHandler)
         document.removeEventListener('keydown', this.onPause)
         next()
     },
@@ -61,8 +62,8 @@ export default {
     },
     created(){
         this.handler = setInterval(() => {
-            if(this.time == 135) {
-                this.handler = setInterval(() => {
+            if(this.time == 135 && this.timeHandler == null) {
+                this.timeHandler = setInterval(() => {
                     this.$emit("notification", {
                         title: "长时间未处理",
                         msg: "请尽快处理",

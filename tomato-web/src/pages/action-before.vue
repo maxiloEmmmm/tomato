@@ -28,7 +28,7 @@ export default {
     created(){
         this.time = this.$store.state.config.defaultWorkTime
         this.handler = setInterval(() => {
-            if(this.timeWait == 135) {
+            if(this.timeWait == 135 && this.timeHandler == null) {
                 this.timeHandler = setInterval(() => {
                     this.$emit("notification", {
                         title: "长时间未处理",
