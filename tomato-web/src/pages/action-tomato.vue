@@ -1,6 +1,12 @@
 <template>
     <div style="padding:4px; flex-direction: column; display: flex;">
-        <a-rate class="goes-list" count="25" :disabled="true" :value="_rate"><a-icon slot="character" type="sound" /></a-rate>
+        <div class="goes-list">
+            <a-progress :percent="_percent" type="circle">
+                <div slot="format" style="font-size: 18px">
+                    {{Math.floor(current / 60)}}分{{current % 60}}秒 / {{time}}分`
+                </div>
+            </a-progress>
+        </div>
         <ysz-list :group="4" :row="true" :no-line="true" style="align-items:center;flex-wrap:nowrap!important">
             <div class="action-wrap" :class="{'action-disabled': _running}" @click="run">
                 <a-icon :class="{active: action == 'run'}" type="play-circle" />
@@ -20,11 +26,7 @@
 
 <style lang="scss" scoped>
     .goes-list {margin-top: 34px;
-        display: flex; flex-wrap: wrap; border: 1px dashed pink;
-        padding: 8px 0; margin: 8px 8px 0 8px; border-radius: 6px;
-        &::v-deep .ant-rate-star {
-            text-align: center; flex: 0 0 20%; margin-right: 0;
-        }
+        display: flex; justify-content: center; font-size: 24px;
     }
     .action-wrap {text-align: center; width:100%; position: relative;
         & > i {font-size: 50px; color: pink; cursor: pointer;
@@ -55,7 +57,7 @@ import {TomatoStart, TomatoEnd, TomatoToRest, MusicPlayTomatoEnd, ActionPause} f
 export default {
     data(){return {time: 25, current: 0, action: '', handler: null}},
     computed: {
-        _rate(){return Math.floor((this.current / (this.time * 60)) * 25)},
+        _percent(){return (this.current / (this.time * 60))},
         _running(){return !!this.handler && this.current < this.time}
     },
     beforeCreate(){

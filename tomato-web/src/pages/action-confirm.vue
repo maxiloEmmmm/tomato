@@ -69,7 +69,7 @@ export default {
                         msg: "请尽快处理",
                         win_time: 5
                     })
-                }, 45 * 1000)
+                }, this.$store.state.config.waitTipInterval * 1000)
             }
             this.addWaitTime()
         }, 1000)
