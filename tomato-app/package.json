@@ -40,13 +40,11 @@
     },
     "mac": {
       "target": [
-        "dmg",
         "zip"
       ]
     },
     "win": {
       "target": [
-        "nsis",
         "zip"
       ],
       "icon": "../common/favicon.ico"

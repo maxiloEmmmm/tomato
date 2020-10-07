@@ -10,6 +10,8 @@ let configToDB = (config) => {
             case "defaultWorkTime":
             case "defaultRestTime":
             case "workTipTime":
+            case "waitTipInterval":
+            case "maxWaitTime":
                 config[k] = `${parseInt(maxiloVue.make("utils").tool.number(config[k]))}`
                 break
             case "confirmTipMissFocus":
@@ -37,8 +39,10 @@ let dbToStore = (config) => {
                     }
                     config[k] = volume
                 case "defaultWorkTime":
+                case "waitTipInterval":
                 case "defaultRestTime":
                 case "workTipTime":
+                case "maxWaitTime":
                     config[k] = parseInt(maxiloVue.make("utils").tool.number(config[k]))
                     break
                 case "confirmTipMissFocus":

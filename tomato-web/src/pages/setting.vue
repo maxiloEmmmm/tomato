@@ -2,10 +2,16 @@
     <a-modal visible title="设置" width="80%" @ok="onOk" @cancel="onCancel">
       <ysz-list row :group="2">
           <ysz-list-item>
-              <span slot="left">默认番茄时间</span><a-input v-model="defaultWorkTime" type="number"></a-input>
+              <span slot="left">默认番茄时间(m)</span><a-input v-model="defaultWorkTime" type="number"></a-input>
           </ysz-list-item>
           <ysz-list-item>
-              <span slot="left">默认休息时间</span><a-input v-model="defaultRestTime" type="number"></a-input>
+              <span slot="left">默认休息时间(m)</span><a-input v-model="defaultRestTime" type="number"></a-input>
+          </ysz-list-item>
+          <ysz-list-item>
+              <span slot="left">提醒间隔(s)</span><a-input v-model="waitTipInterval" type="number"></a-input>
+          </ysz-list-item>
+          <ysz-list-item>
+              <span slot="left">最大等待时间(分, 用作数据统计)</span><a-input v-model="maxWaitTime" type="number"></a-input>
           </ysz-list-item>
           <ysz-list-item>
               <span slot="left">暂停快捷键(ctrl+?)</span><a-input v-model="pauseKey"></a-input>
@@ -29,7 +35,7 @@
     <ysz-list-item-top>
         <span slot="top">番茄提醒</span>
         <ysz-list-item>
-            <span slot="left">时间</span>
+            <span slot="left">时间(m)</span>
             <a-input v-model="workTipTime" type="number"></a-input>
         </ysz-list-item>
         <ysz-list-item v-if="workTipTime > 0">
