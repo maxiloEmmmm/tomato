@@ -62,3 +62,5 @@ tomato-app/setting.json
 tomato-app/*.log
 tomato-app/dist-web
 tomato-app/*.sqlite
+
+.history

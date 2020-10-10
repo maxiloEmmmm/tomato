@@ -57,7 +57,7 @@ import {TomatoStart, TomatoEnd, TomatoToRest, MusicPlayTomatoEnd, ActionPause} f
 export default {
     data(){return {time: 25, current: 0, action: '', handler: null}},
     computed: {
-        _percent(){return (this.current / (this.time * 60))},
+        _percent(){return (this.current / (this.time * 60)) * 100},
         _running(){return !!this.handler && this.current < this.time}
     },
     beforeCreate(){
