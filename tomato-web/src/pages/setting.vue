@@ -43,6 +43,18 @@
             <a-input v-model="workTipMsg"></a-input>
         </ysz-list-item>
     </ysz-list-item-top>
+    <ysz-list-item-top>
+        <span slot="top">眨眼😉</span>
+        <ysz-list-item-top>
+            <ysz-list-item slot="top">
+                <span slot="left">开启</span><a-switch v-model="blinkEnable"></a-switch>
+            </ysz-list-item>
+            <ysz-list-item>
+                <span slot="left">番茄占比(实际间隔不会小于5分钟)</span>
+                <a-slider v-model="blinkTomatoPercent" :max="1" :min="0" :step="0.1" style="width:100%"/>
+            </ysz-list-item>
+        </ysz-list-item-top>
+    </ysz-list-item-top>
     </a-modal>
 </template>
 

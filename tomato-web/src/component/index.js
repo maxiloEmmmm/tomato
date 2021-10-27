@@ -36,6 +36,7 @@ import {
     Checkbox,
     Progress,
     Statistic,
+    Slider,
     Alert,
     Rate
 } from 'ant-design-vue'
@@ -71,6 +72,7 @@ maxiloVue.vue.use(Drawer)
 maxiloVue.vue.use(Alert)
 maxiloVue.vue.use(Checkbox)
 maxiloVue.vue.use(Progress)
+maxiloVue.vue.use(Slider)
 maxiloVue.vue.use(Statistic)
 maxiloVue.vue.use(function(Vue){
     Vue.prototype.$message = Message

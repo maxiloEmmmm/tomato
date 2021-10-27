@@ -2,7 +2,6 @@ import maxiloVue from 'maxilo-vue';
 
 import notification from './notification';
 import config from './config';
-
 //两种方式因人而异
 
 //1

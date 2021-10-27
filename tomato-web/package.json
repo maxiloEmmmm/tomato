@@ -37,7 +37,7 @@
     "core-js": "^3.6.5",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "maxilo-vue": "3.0.7-beta13",
+    "maxilo-vue": "3.0.7-beta14",
     "maxilo-vue-ysz-ui": "0.0.15-beta3",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",

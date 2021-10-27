@@ -1,8 +1,9 @@
 import maxiloVue from 'maxilo-vue';
 import configDefault from "config/tomato"
-
+import {configToDB} from 'store/doing/config'
 maxiloVue.register({
     register(app){
+        
     },
     async boot(app){
         let db = await app.make("db")
@@ -13,7 +14,6 @@ maxiloVue.register({
         Object.keys(cs).forEach(c => {
             existKeys[c] = cs[c].value
         })
-        store.commit("config/setDBConfig", existKeys)
         utils.add("app.refreshConfig", (tmp) => {
             store.commit("config/setDBConfig", tmp)
         })
@@ -40,9 +40,16 @@ maxiloVue.register({
         if(appendConfigKeys.length != 0) {
             let configInitSql = "insert into `config`(`key`, `value`) values"
             appendConfigKeys.forEach(c => {
-                configInitSql += `("${c}", ""),`
+                configInitSql += `("${c}", "${configToDB({[c]: configDefault[c]})[c]}"),`
             })
             db.iexec(configInitSql.slice(0, -1))
         }
+
+        let dbConfig = utils.tool.makeKey(db.iquery("select * from config"), "key")
+        let dc = {}
+        Object.keys(dbConfig).forEach(c => {
+            dc[c] = dbConfig[c].value
+        })
+        store.commit("config/setDBConfig", dc)
     }
 })
