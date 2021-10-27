@@ -3,7 +3,7 @@ import maxiloVue from "maxilo-vue"
 
 const state = Object.assign({}, configDefault)
 
-let configToDB = (config) => {
+export const configToDB = (config) => {
     Object.keys(config).forEach(k => {
         switch(k) {
             case "volume":
@@ -14,10 +14,14 @@ let configToDB = (config) => {
             case "maxWaitTime":
                 config[k] = `${parseInt(maxiloVue.make("utils").tool.number(config[k]))}`
                 break
+            case "blinkTomatoPercent":
+                config[k] = `${parseFloat(maxiloVue.make("utils").tool.number(config[k]))}`
+                break
             case "confirmTipMissFocus":
             case "workEndMusicEnable":
             case "restEndMusicEnable":
             case "showAppMissFocus":
+            case "blinkEnable":
             case "restConfirmGoTomato":
                 config[k] = config[k] ? "1" : "0"
                 break
@@ -28,7 +32,7 @@ let configToDB = (config) => {
     return config
 }
 
-let dbToStore = (config) => {
+export const dbToStore = (config) => {
     Object.keys(config).forEach(k => {
         if(config[k] !== "") {
             switch(k) {
@@ -48,9 +52,13 @@ let dbToStore = (config) => {
                 case "confirmTipMissFocus":
                 case "workEndMusicEnable":
                 case "restEndMusicEnable":
+                case "blinkEnable":
                 case "showAppMissFocus":
                 case "restConfirmGoTomato":
                     config[k] = config[k] == "1"
+                    break
+                case "blinkTomatoPercent":
+                    config[k] = parseFloat(maxiloVue.make("utils").tool.number(config[k]))
                     break
                 default:
                     break

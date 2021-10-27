@@ -97,17 +97,21 @@ export default {
                 frame: false, show: false, title: '提醒', icon: ico,
                 width: 350,
                 height: 90,
-                x: 0,
-                y: 0
+                x: payload.x === undefined ? 0 : payload.x,
+                y: payload.y === undefined ? 0 : payload.y
             })
+            let r = this.$utils.tool.random('win-')
             this.setInfo({
-                title: payload.title ? payload.title : "",
-                msg: payload.msg ? payload.msg : "~",
-                wid: notificationWin.id,
-                time: !!payload.win_time ? payload.win_time : 0,
+                ws: {
+                    title: payload.title ? payload.title : "",
+                    msg: payload.msg ? payload.msg : "~",
+                    wid: notificationWin.id,
+                    key: r,
+                    time: !!payload.win_time ? payload.win_time : 0,
+                }
             })
-            notificationWin.loadURL(this.$utils.href('/notification'))
-            
+            notificationWin.loadURL(this.$utils.href(`/notification/${r}`))
+            // notificationWin.webContents.openDevTools()
             if(payload.focus) {
                 notificationWin.show()
             }else {

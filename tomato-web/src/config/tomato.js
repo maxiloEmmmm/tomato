@@ -11,5 +11,8 @@ export default {
     restConfirmGoTomato: false,
     workTipTime: 0,
     workTipMsg: "",
-    pauseKey: "z"
+    pauseKey: "z",
+    blinkEnable: true,
+    maxBlinkMinute: 5,
+    blinkTomatoPercent: 0.2
 }

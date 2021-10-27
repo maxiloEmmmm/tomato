@@ -2,7 +2,7 @@ import maxiloVue from 'maxilo-vue';
 import './middleware'; 
 let $router = maxiloVue.make("router").getRoute();
 
-$router.add('/notification', () => import('pages/notification'))
+$router.add('/notification/:id', () => import('pages/notification'))
 $router.add('/setting', () => import('pages/setting'))
 $router.add('/chart', () => import('pages/chart'))
 

@@ -1,13 +1,14 @@
 {
   "name": "tomato-app",
-  "description": "变得更好",
-  "version": "0.0.1",
+  "description": "休息屁股、背及肩膀和颈椎",
+  "version": "0.0.2",
   "main": "main.js",
   "productName": "番茄钟",
   "scripts": {
     "start": "electron .",
     "pack-win": "electron-builder --win --x64",
-    "pack-mac": "electron-builder --mac --x64"
+    "pack-mac": "electron-builder --mac --x64",
+    "pack-all": "npm run pack-mac && npm run pack-win"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

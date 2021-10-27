@@ -6132,10 +6132,10 @@ maxilo-vue-ysz-ui@0.0.15-beta3:
     tailwindcss "^1.5.1"
     vue "^2.6.10"
 
-maxilo-vue@3.0.7-beta13:
-  version "3.0.7-beta13"
-  resolved "https://registry.npmjs.org/maxilo-vue/-/maxilo-vue-3.0.7-beta13.tgz#66a44db05abbdecffe1b8ad2b3056676fe35fa71"
-  integrity sha512-I/m6vpSXryHxUU6wncGTDloois92tWmxf6xhrxYykufsMxbpsWUqDeU7I5iiLMdwXy5/Y0Ijo2si0WaTO1UPPQ==
+maxilo-vue@3.0.7-beta14:
+  version "3.0.7-beta14"
+  resolved "https://registry.npmjs.org/maxilo-vue/-/maxilo-vue-3.0.7-beta14.tgz#25345a2bb05acecf7807fb446620566c485eb945"
+  integrity sha512-MPMGLpGMmDKMM6V6un+ntZkJmIi2tbaYH3b1MvPsK+KN2DpPO8qeOmb0scI0zsP8jClnD0m2Ll8RDKAjYZ8peg==
   dependencies:
     axios "^0.18.0"
     rollup "^2.23.0"

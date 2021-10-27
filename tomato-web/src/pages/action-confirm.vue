@@ -67,7 +67,8 @@ export default {
                     this.$emit("notification", {
                         title: "长时间未处理",
                         msg: "请尽快处理",
-                        win_time: 5
+                        win_time: 5,
+                        focus: !!this.$store.state.config.confirmTipMissFocus
                     })
                 }, this.$store.state.config.waitTipInterval * 1000)
             }
