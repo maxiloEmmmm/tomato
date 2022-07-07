@@ -39,7 +39,7 @@
     "less-loader": "^4.1.0",
     "maxilo-vue": "3.0.7-beta14",
     "maxilo-vue-ysz-ui": "0.0.15-beta3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
